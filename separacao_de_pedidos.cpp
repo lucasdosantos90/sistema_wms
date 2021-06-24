@@ -17,7 +17,7 @@ separacao_de_pedidos::separacao_de_pedidos(QWidget *parent) :
             QMessageBox::warning(this,"ERRO","Erro ao abrir banco de dados!");
         }
     }
-//
+    ui->tableWidget->setVisible(false);
     ui->tableWidget->setColumnCount(17);
     ui->tableWidget->setColumnWidth(0,50);
     ui->tableWidget->setColumnWidth(1,100);
@@ -193,6 +193,17 @@ void separacao_de_pedidos::on_txt_ped_item_qtde_returnPressed()
                if(ui->txt_ped_qtde_rest->text().toInt()<=0){
                    ui->txt_ped_qtde_rest->setText(QString::number(0));
                    QMessageBox::information(this,"Finalizado!","Produto finzalizado!");
+                   ui->txt_ped_num->setText("");
+                   ui->txt_ped_loc->setText("");
+                   ui->txt_ped_nome_prod->setText("");
+                   ui->txt_ped_caixa->setText("");
+                   ui->txt_ped_caixa_itens->setText("");
+                   ui->txt_ped_qtde_total->setText("");
+                   ui->txt_ped_qtde_rest->setText("");
+                   ui->txt_ped_linha_atual->setText("");
+                   ui->txt_ped_cod_produto->setText("");
+                   ui->txt_ped_item_qtde_a_passar->setText("");
+                   ui->txt_ped_item_qtde->setText("");
                }
             }
         }

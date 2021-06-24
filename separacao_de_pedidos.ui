@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>500</width>
     <height>560</height>
    </rect>
   </property>
@@ -458,9 +458,12 @@
    </layout>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>540</x>
      <y>30</y>
      <width>451</width>
      <height>101</height>
@@ -468,6 +471,9 @@
    </property>
    <property name="lineWidth">
     <number>1</number>
+   </property>
+   <property name="showGrid">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
