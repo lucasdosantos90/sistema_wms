@@ -15,6 +15,113 @@ cadastro_usuarios::cadastro_usuarios(QWidget *parent) :
             QMessageBox::warning(this,"ERRO","Erro ao abrir banco de dados!");
         }
     }
+
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setColumnWidth(0,50);
+    ui->tableWidget->setColumnWidth(1,100);
+    QStringList cab={"ID Acesso",
+"Acesso Usuário","Acesso (sim/não)"};
+    ui->tableWidget->setHorizontalHeaderLabels(cab);
+    //ui->tableWidget->setStyleSheet("QTableView {selection-background-color:blue}");
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->verticalHeader()->setVisible(false);
+    ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    ui->tableWidget->insertRow(3);
+    ui->tableWidget->setItem(1,0,new QTableWidgetItem("ID Acesso"));
+    ui->tableWidget->setItem(2,1,new QTableWidgetItem("Acesso Usuário"));
+    ui->tableWidget->setItem(3,2,new QTableWidgetItem("Acesso (sim/não)"));
+
+    QTableWidgetItem *cadestoq = new QTableWidgetItem();
+    cadestoq->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *cadusu = new QTableWidgetItem();
+    cadusu->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *cadpro = new QTableWidgetItem();
+    cadpro->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *log = new QTableWidgetItem();
+    log->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *transf = new QTableWidgetItem();
+    transf->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *cadprodestoq = new QTableWidgetItem();
+    cadprodestoq->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *lancentrestoq = new QTableWidgetItem();
+    lancentrestoq->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *cadforn = new QTableWidgetItem();
+    cadforn->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *cadcli = new QTableWidgetItem();
+    cadcli->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *pedcompr = new QTableWidgetItem();
+    pedcompr->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *cadtransp = new QTableWidgetItem();
+    cadtransp->setCheckState(Qt::Unchecked);
+    QTableWidgetItem *seppedid = new QTableWidgetItem();
+    seppedid->setCheckState(Qt::Unchecked);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("1"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Estoques"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadestoq);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("2"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Usuários"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadusu);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("3"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Produtos"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadpro);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("4"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Entrar - Login"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,log);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("5"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Transferência - Entrada de produtos no estoque"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,transf);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("6"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Produtos no Estoque"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadprodestoq);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("7"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Lançar entrada no estoque"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,lancentrestoq);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("8"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Fornecedores"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadforn);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("9"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Clientes"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadcli);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("10"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Pedido de Compra"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,pedcompr);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("11"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Cadastro de Transportadoras"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,cadtransp);
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("12"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("Separação de Pedidos"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,seppedid);
+
+    //ui->tableWidget->setRowHeight(3,3);
+
+
     ui->tabWidget_cadastro_usuario->setCurrentIndex(0);
     ui->cb_cad_usu_sexo->addItem("Masculino");
     ui->cb_cad_usu_sexo->addItem("Feminino");
@@ -27,8 +134,8 @@ cadastro_usuarios::cadastro_usuarios(QWidget *parent) :
     QString data=QDate::currentDate().toString("dd/MM/yyyy");//Pega a data do sistema
     QString hora=QTime::currentTime().toString("hh:mm:ss");//Pega a hora do sistema
     QString cad_data = data+"-"+hora;
-    ui->txt_cad_usu_data_cadastro->setReadOnly(true);
-    ui->txt_cad_usu_data_cadastro->setText(cad_data);//atribui a variavel com a data do sistema no qlineedit
+    //ui->txt_cad_usu_data_cadastro->setReadOnly(true);//(deletado da ui)
+    //ui->txt_cad_usu_data_cadastro->setText(cad_data);//(deletado da ui)atribui a variavel com a data do sistema no qlineedit
 
 
 //    ui->cb_cad_usu_tipo_usuario->addItem("A");
@@ -70,22 +177,123 @@ void cadastro_usuarios::on_btn_cadastro_usuario_clicked()
     //QString data_nasc_usu=ui->txt_cad_usu_data_nasc->text();
     QString data_nasc_usu=ui->txt_cad_usu_data_nasc->text();
 
-    int acesso_tela_estoque_id=1;
-    QString acesso_tela_estoque ="Cadastro de Estoque";
-
-    int acesso_tela_usuario_id=2;
-    QString acesso_tela_usuario ="Cadastro de Usuários";
-
-    if(ui->cb_cad_estoque->isChecked()){
+    int acesso_cadestoque_id=1;
+    QString acesso_cadestoque ="Cadastro de Estoque";
+    int acesso_cadusuario_id=2;
+    QString acesso_cadusuario ="Cadastro de Usuários";
+    int acesso_cadprod_id=3;
+    QString acesso_cadprod ="Cadastro de Produtos";
+    int acesso_login_id=4;
+    QString acesso_login ="Entrar - Login";
+    int acesso_transfestoq_id=5;
+    QString acesso_transfestoq ="Transferência - Entrada de produtos no estoque";
+    int acesso_cadprodestoq_id=6;
+    QString acesso_cadprodestoq ="Cadastro de Produtos no Estoque";
+    int acesso_lancestoq_id=7;
+    QString acesso_lancestoq ="Lançar entrada no estoque";
+    int acesso_cadforn_id=8;
+    QString acesso_cadforn ="Cadastro de Fornecedores";
+    int acesso_cadcli_id=9;
+    QString acesso_cadcli ="Cadastro de Clientes";
+    int acesso_pedcompr_id=10;
+    QString acesso_pedcompr ="Pedido de Compra";
+    int acesso_cadtransp_id=11;
+    QString acesso_cadtransp ="Cadastro de Transportadoras";
+    int acesso_sepped_id=12;
+    QString acesso_sepped ="Separação de Pedidos";
+    if(ui->tableWidget->item(0,2)->checkState()){
         QSqlQuery query_tela;
         query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
-        "values ("+QString::number(acesso_tela_estoque_id)+",'"+acesso_tela_estoque+"','"+username_usu+"')");
+        "values ("+QString::number(acesso_cadestoque_id)+",'"+acesso_cadestoque+"','"+username_usu+"')");
     }
-    if(ui->cb_cad_usuario->isChecked()){
+
+
+    if(ui->tableWidget->item(1,2)->checkState()){
         QSqlQuery query_tela;
         query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
-        "values ("+QString::number(acesso_tela_usuario_id)+",'"+acesso_tela_usuario+"','"+username_usu+"')");
+        "values ("+QString::number(acesso_cadusuario_id)+",'"+acesso_cadusuario+"','"+username_usu+"')");
     }
+
+
+    if(ui->tableWidget->item(2,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_cadprod_id)+",'"+acesso_cadprod+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(3,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_login_id)+",'"+acesso_login+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(4,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_transfestoq_id)+",'"+acesso_transfestoq+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(5,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_cadprodestoq_id)+",'"+acesso_cadprodestoq+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(6,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_lancestoq_id)+",'"+acesso_lancestoq+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(7,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_cadforn_id)+",'"+acesso_cadforn+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(8,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_cadcli_id)+",'"+acesso_cadcli+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(9,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_pedcompr_id)+",'"+acesso_pedcompr+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(10,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_cadtransp_id)+",'"+acesso_cadtransp+"','"+username_usu+"')");
+    }
+
+
+    if(ui->tableWidget->item(11,2)->checkState()){
+        QSqlQuery query_tela;
+        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+        "values ("+QString::number(acesso_sepped_id)+",'"+acesso_sepped+"','"+username_usu+"')");
+    }
+
+//    if(ui->cb_cad_estoque->isChecked()){
+//        QSqlQuery query_tela;
+//        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+//        "values ("+QString::number(acesso_tela_estoque_id)+",'"+acesso_tela_estoque+"','"+username_usu+"')");
+//    }
+//    if(ui->cb_cad_usuario->isChecked()){
+//        QSqlQuery query_tela;
+//        query_tela.exec("insert into acesso_usuarios (id_acesso_usuario,acesso_usuario,username_usuario)"
+//        "values ("+QString::number(acesso_tela_usuario_id)+",'"+acesso_tela_usuario+"','"+username_usu+"')");
+//    }
 
     QSqlQuery query;
     query.prepare("insert into tabela_usuarios (nome_usuario,endereco_usuario,username_usuario,"
@@ -314,3 +522,38 @@ void cadastro_usuarios::on_txt_filtrar_usuario_returnPressed()
     ui->txt_filtrar_usuario->clear();
     ui->txt_filtrar_usuario->setFocus();
 }
+
+
+void cadastro_usuarios::on_btn_excluir_usuario_clicked()
+{
+    if(ui->tableWidget_consulta_usuario->currentColumn()!=-1){
+        int row=ui->tableWidget_consulta_usuario->currentRow();
+        QString username=ui->tableWidget_consulta_usuario->item(row,3)->text();
+        QString nome=ui->tableWidget_consulta_usuario->item(row,0)->text();
+        QMessageBox::StandardButton opc=QMessageBox::question(this,"Deseja excluir?","Confirma excluir o usuário selecionado?\nusuário: "+username,
+QMessageBox::Yes|QMessageBox::No);
+        if(opc==QMessageBox::Yes){
+            QSqlQuery query;
+            query.prepare("delete from tabela_usuarios where "
+" nome_usuario ='"+nome+"' and username_usuario ='"+username+"' ");
+            if(query.exec()){
+                ui->tableWidget_consulta_usuario->removeRow(ui->tableWidget_consulta_usuario->currentRow());
+                QMessageBox::warning(this,"Excluído!","O usuário "+username+"\nfoi excluído com sucesso!");
+            }else{
+                QMessageBox::warning(this,"Erro","Não foi possível deletar!");
+            }
+        }
+    }else{
+        QMessageBox::warning(this,"Erro","Selecione um item primeiro!");
+    }
+}
+
+
+
+
+
+
+
+
+
+

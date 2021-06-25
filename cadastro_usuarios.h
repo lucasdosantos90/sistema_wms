@@ -27,6 +27,8 @@ private slots:
 
     void on_txt_filtrar_usuario_returnPressed();
 
+    void on_btn_excluir_usuario_clicked();
+
 private:
     Ui::cadastro_usuarios *ui;
 };
