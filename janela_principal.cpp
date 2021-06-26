@@ -180,7 +180,7 @@ void janela_principal::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, in
             QString item_string = item->text(0);
             cadastro_usuarios *j = new cadastro_usuarios(ui->mdiArea);
             j->setWindowTitle(item_string);
-            j->setFixedSize(571,517);
+            j->setFixedSize(1090,485);
             QGridLayout *gridLayout = new QGridLayout(j);
             j->setLayout(gridLayout);
             Qt::WindowFlags flags = j->window()->windowFlags();

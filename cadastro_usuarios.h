@@ -29,6 +29,12 @@ private slots:
 
     void on_btn_excluir_usuario_clicked();
 
+    void on_btn_editar_usuario_clicked();
+
+    void on_btn_atual_cancelar_clicked();
+
+    void on_btn_atualizar_usuario_clicked();
+
 private:
     Ui::cadastro_usuarios *ui;
 };

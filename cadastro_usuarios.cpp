@@ -29,11 +29,6 @@ cadastro_usuarios::cadastro_usuarios(QWidget *parent) :
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    ui->tableWidget->insertRow(3);
-    ui->tableWidget->setItem(1,0,new QTableWidgetItem("ID Acesso"));
-    ui->tableWidget->setItem(2,1,new QTableWidgetItem("Acesso Usuário"));
-    ui->tableWidget->setItem(3,2,new QTableWidgetItem("Acesso (sim/não)"));
-
     QTableWidgetItem *cadestoq = new QTableWidgetItem();
     cadestoq->setCheckState(Qt::Unchecked);
     QTableWidgetItem *cadusu = new QTableWidgetItem();
@@ -154,6 +149,22 @@ cadastro_usuarios::cadastro_usuarios(QWidget *parent) :
     ui->tableWidget_consulta_usuario->verticalHeader()->setVisible(false);
     ui->tableWidget_consulta_usuario->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget_consulta_usuario->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    ui->tableWidget_atual_usu->insertRow(3);
+    ui->tableWidget_atual_usu->setItem(1,0,new QTableWidgetItem("ID Acesso"));
+    ui->tableWidget_atual_usu->setItem(2,1,new QTableWidgetItem("Acesso Usuário"));
+    ui->tableWidget_atual_usu->setItem(3,2,new QTableWidgetItem("Acesso (sim/não)"));
+    ui->tableWidget_atual_usu->setColumnCount(3);
+    ui->tableWidget_atual_usu->setColumnWidth(0,50);
+    ui->tableWidget_atual_usu->setColumnWidth(1,100);
+    QStringList tab_acesso={"ID Usuario","Acesso Usuário","Username"};
+    ui->tableWidget_atual_usu->setHorizontalHeaderLabels(tab_acesso);
+    ui->tableWidget_atual_usu->setStyleSheet("QTableView {selection-background-color:blue}");
+    ui->tableWidget_atual_usu->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_atual_usu->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget_atual_usu->verticalHeader()->setVisible(false);
+    ui->tableWidget_atual_usu->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->tableWidget_atual_usu->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 cadastro_usuarios::~cadastro_usuarios()
@@ -544,16 +555,65 @@ QMessageBox::Yes|QMessageBox::No);
             }
         }
     }else{
-        QMessageBox::warning(this,"Erro","Selecione um item primeiro!");
+        QMessageBox::warning(this,"Erro","Selecione um usuário primeiro!");
     }
 }
 
+void cadastro_usuarios::on_btn_editar_usuario_clicked()
+{
+    int row=ui->tableWidget_consulta_usuario->currentRow();
+    if(!ui->tableWidget_consulta_usuario->currentItem()){
+        QMessageBox::warning(this,"Erro","Selecione um usuário primeiro!");
+    }else{
+        QString username=ui->tableWidget_consulta_usuario->item(row,3)->text();
+        QMessageBox::StandardButton opc=QMessageBox::question(this,"Deseja Editar?","Confirma editar o usuário selecionado?\nusuário: "+username,
+    QMessageBox::Yes|QMessageBox::No);
+        if(opc==QMessageBox::Yes){
+            while(ui->tableWidget_atual_usu->rowCount()>0){
+                ui->tableWidget_atual_usu->removeRow(0);
+            }
+            QSqlQuery query_usuario,query_acesso_usu;
+            query_usuario.exec("select * from tabela_usuarios where username_usuario "
+        " = '"+username+"' order by username_usuario ");
+            query_usuario.first();
+            ui->txt_atual_usu_nome->setText(query_usuario.value(1).toString());
+            ui->txt_atual_usu_username->setText(query_usuario.value(4).toString());
+            ui->txt_atual_usu_senha->setText(query_usuario.value(6).toString());
+            ui->txt_atual_usu_cep->setText(query_usuario.value(9).toString());
+            ui->txt_atual_usu_endereco->setText(query_usuario.value(2).toString());
+            ui->txt_atual_usu_fone->setText(query_usuario.value(5).toString());
+            ui->cb_atual_usu_tipo_usuario->setCurrentIndex(0);
+            ui->cb_atual_usu_sexo->setCurrentIndex(0);
+            ui->txt_atual_usu_email->setText(query_usuario.value(7).toString());
+            ui->txt_atual_usu_email_alt->setText(query_usuario.value(11).toString());
+            ui->txt_atual_usu_data_nasc->setText(query_usuario.value(13).toString());
+            ui->txt_atual_usu_pais->setText(query_usuario.value(8).toString());
+            query_acesso_usu.exec("select * from acesso_usuarios where username_usuario "
+        " = 'adm' order by id_acesso_usuario ");
+            query_acesso_usu.first();
+            if(query_acesso_usu.value(1).toString()!=""){
+                do{
+                    int cont=ui->tableWidget_atual_usu->rowCount();
+                    ui->tableWidget_atual_usu->insertRow(cont);
+                    QTableWidgetItem *acesso = new QTableWidgetItem(query_acesso_usu.value(2).toString());
+                    acesso->setCheckState(Qt::Unchecked);
+                    ui->tableWidget_atual_usu->setItem(cont,0,new QTableWidgetItem(query_acesso_usu.value(0).toString()));
+                    ui->tableWidget_atual_usu->setItem(cont,1,new QTableWidgetItem(query_acesso_usu.value(1).toString()));
+                    ui->tableWidget_atual_usu->setItem(cont,2,acesso);
+                }while(query_acesso_usu.next());
+            }
+        }else{
+            QMessageBox::warning(this,"Erro","Selecione um usuário primeiro!");
+        }
+    }
+}
 
+void cadastro_usuarios::on_btn_atual_cancelar_clicked()
+{
 
+}
 
+void cadastro_usuarios::on_btn_atualizar_usuario_clicked()
+{
 
-
-
-
-
-
+}
