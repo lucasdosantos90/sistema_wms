@@ -17,13 +17,20 @@ cadastro_estoque::cadastro_estoque(QWidget *parent) :
         }
     }
     con.abrir();
+
+    ui->tabWidget->setCurrentIndex(0);
+
     ui->tableWidget_cad_estoque->setColumnCount(5);
-    ui->tableWidget_cad_estoque->setColumnWidth(0,50);
-    ui->tableWidget_cad_estoque->setColumnWidth(1,100);
-    QStringList cabecalho={"ID","Nome Estoque","Setor Estoque","Nome Localização", "Quantidade Máxima na Localização"};
+//    ui->tableWidget_cad_estoque->setColumnWidth(0,30);
+//    ui->tableWidget_cad_estoque->setColumnWidth(1,200);
+//    ui->tableWidget_cad_estoque->setColumnWidth(2,100);
+//    ui->tableWidget_cad_estoque->setColumnWidth(3,150);
+//    ui->tableWidget_cad_estoque->setColumnWidth(4,200);
+    QStringList cabecalho={"ID","Nome Estoque","Setor Estoque","Nome Localização", "Quantidade Máxima"};
     ui->tableWidget_cad_estoque->setHorizontalHeaderLabels(cabecalho);
     ui->tableWidget_cad_estoque->setStyleSheet("QTableView {selection-background-color:blue}");
     ui->tableWidget_cad_estoque->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_cad_estoque->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget_cad_estoque->verticalHeader()->setVisible(false);
     ui->tableWidget_cad_estoque->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget_cad_estoque->setEditTriggers(QAbstractItemView::NoEditTriggers);

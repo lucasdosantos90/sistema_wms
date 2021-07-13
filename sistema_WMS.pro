@@ -16,6 +16,7 @@ SOURCES += \
     cadastro_estoque.cpp \
     cadastro_produtos.cpp \
     cadastro_usuarios.cpp \
+    consulta_de_pedidos.cpp \
     entrada_produtos_estoque.cpp \
     janela_login.cpp \
     lancar_entrada_no_estoque.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     cadastro_produtos.h \
     cadastro_usuarios.h \
     conexao.h \
+    consulta_de_pedidos.h \
     entrada_produtos_estoque.h \
     funcoes_globais.h \
     janela_login.h \
@@ -50,6 +52,7 @@ FORMS += \
     cadastro_estoque.ui \
     cadastro_produtos.ui \
     cadastro_usuarios.ui \
+    consulta_de_pedidos.ui \
     entrada_produtos_estoque.ui \
     janela_login.ui \
     janela_principal.ui \

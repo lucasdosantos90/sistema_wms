@@ -13,6 +13,7 @@
 #include "cadastro_de_transportadoras.h"
 #include "separacao_de_pedidos.h"
 #include "pedido_de_compra.h"
+#include "consulta_de_pedidos.h"
 #include "conexao.h"
 #include <QMdiSubWindow>
 #include <QSqlQuery>
@@ -158,7 +159,7 @@ void janela_principal::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, in
             QString item_string = item->text(0);
             cadastro_estoque *j = new cadastro_estoque(ui->mdiArea);
             j->setWindowTitle(item_string);
-            j->setFixedSize(800,600);
+            j->setFixedSize(790,390);
             QGridLayout *gridLayout = new QGridLayout(j);
             j->setLayout(gridLayout);
             Qt::WindowFlags flags = j->window()->windowFlags();
@@ -401,6 +402,28 @@ void janela_principal::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, in
             separacao_de_pedidos *j = new separacao_de_pedidos(ui->mdiArea);
             j->setWindowTitle(item_string);
             j->setFixedSize(500,560);
+            QGridLayout *gridLayout = new QGridLayout(j);
+            j->setLayout(gridLayout);
+            Qt::WindowFlags flags = j->window()->windowFlags();
+            flags |= Qt::CustomizeWindowHint;
+            flags &= ~Qt::WindowContextHelpButtonHint;
+            //flags &= ~Qt::WindowSystemMenuHint;
+            //flags &= ~Qt::WindowMinMaxButtonsHint;
+            //flags &= ~Qt::WindowMinimizeButtonHint;
+            flags &= ~Qt::WindowMinimized;
+            flags &= ~Qt::WindowCloseButtonHint;
+            ui->mdiArea->addSubWindow(j)->setWindowFlags(flags);
+            ui->mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+            ui->mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+            j->show();
+        }
+        break;
+    case 13:
+        {
+            QString item_string = item->text(0);
+            consulta_de_pedidos *j = new consulta_de_pedidos(ui->mdiArea);
+            j->setWindowTitle(item_string);
+            j->setFixedSize(645,580);
             QGridLayout *gridLayout = new QGridLayout(j);
             j->setLayout(gridLayout);
             Qt::WindowFlags flags = j->window()->windowFlags();
